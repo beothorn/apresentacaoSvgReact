@@ -24,9 +24,87 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+				  <section>
+              <h1>&lt;React&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&ltSVG/&gt;<br>&lt;React&gt;</h1>
+          </section>
+				  <section>
+              <h1>Css não é amigavel para desenhar</h1>
+              <pre><code data-trim>
+.circle {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background: green; 
+  /* width and height must be equal */
+}
+              </code></pre>
+              <div style="border-radius: 50%;width:100px;height:100px;background:green;">
+                  <div style="text-align:center;line-height:100px;width:100px;height:100px;font-size:28px;">100px</div> 
+              </div>
+             <div style="border-radius: 50%;width:100%;height:100%;background:red;">width 100%</div>
+          </section>
+          <section>
+              <h1>SVG - Feito pra desenhar</h1>
+              <pre><code data-trim>
+                  <svg viewBox="0 0 1 1">
+                      <circle cy=".5" cx=".5" r=".5" fill="#333333"/>
+                  </svg>
+              </code></pre>
+              <div style="width:100px;height:100px;">
+                  <div style="position:absolute;width:100px;height:100px;z-index:-1;">
+                      <svg viewBox="0 0 1 1">
+                          <circle cy=".5" cx=".5" r=".5" fill="green"/>
+                      </svg>
+                  </div>
+                  <div style="width:100px;height:100px;display: table-cell; vertical-align: middle;font-size:28px;">100px</div>
+              </div>
+              <div style="width:100%;height:100px;">
+                  <div style="position:absolute;width:100%;height:100px;z-index:-1;">
+                      <svg viewBox="0 0 1 1">
+                          <circle cy=".5" cx=".5" r=".5" fill="red"/>
+                      </svg>
+                  </div>
+                  <div style="width:100%;height:100px;display: table-cell; vertical-align: middle;font-size:28px;">100%</div>
+              </div>
+
+          </section>
+          <section>
+              <h1>Sistema de coordenadas dentro do SVG</h1>
+              <p>Independente do container</p>
+              <p>Renderiza de acordo com a viewbox (camera)<p>
+              <p>Escala de acordo como tamanho do svg</p>
+          </section>
+          <section>
+              <p>Quatro pontos (10,10) (10,90) (90,10) (90,90)</p>
+              <p>Viewbox (x:0 y:0 largura:100 altura:100)</p>
+              <p>SVG altura:200</p>
+              <pre><code data-trim>
+&lt;div style="background:gray"&gt;
+    &lt;svg viewBox="0 0 100 100" height="200" width:"100%" &gt;
+        &lt;circle cy="10" cx="10" r="5" fill="red"/&gt;
+        &lt;circle cy="10" cx="90" r="5" fill="yellow"/&gt;
+        &lt;circle cy="90" cx="10" r="5" fill="green"/&gt;
+        &lt;circle cy="90" cx="90" r="5" fill="blue"/&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;
+              </code></pre>
+          </section>
+          <section>
+              <p>Alterar o tamanho do SVG não interfere com as coordenadas internas do svg</p>
+              <p>
+                  <button onclick="document.getElementById('resizableSVG').setAttribute('height', parseInt(document.getElementById('resizableSVG').getAttribute('height'))+50)">+</button>
+                  <button onclick="document.getElementById('resizableSVG').setAttribute('height', parseInt(document.getElementById('resizableSVG').getAttribute('height'))-50)">-</button>
+              </p>
+              <div style="background:gray">
+                  <svg id="resizableSVG" viewBox="0 0 100 100" height="200" width:"100%" >
+                      <circle cy="10" cx="10" r="5" fill="red"/>
+                      <circle cy="10" cx="90" r="5" fill="yellow"/>
+                      <circle cy="90" cx="10" r="5" fill="green"/>
+                      <circle cy="90" cx="90" r="5" fill="blue"/>
+                  </svg>
+              </div>
+          </section>
+		</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
