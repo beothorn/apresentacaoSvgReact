@@ -104,6 +104,109 @@
                   </svg>
               </div>
           </section>
+          <section>
+              <p>Tag g para definir grupos e aplicar transformações</p>
+              <p>Grupos tem coordenadas locais</p>
+              <p>Transformações:</p>
+              <ul>
+                  <li>translation</li>
+                  <li>rotation</li>
+                  <li>scale</li>
+                  <li>outras...</li>
+              </ul>
+          </section>
+           <section>
+              <p>Outras coisas pra desenhar:</p>
+              <ul>
+                  <li>rect</li>
+                  <li>line</li>
+                  <li>ellipse</li>
+                  <li>polyline</li>
+                  <li>polygon</li>
+                  <li>path</li>
+              </ul>
+          </section>
+          <section>
+              <p>Paths: maiúsculo para posição absoluta e minusculo para relativa</p>
+              <table>
+                  <tbody>
+                      <tr>
+                          <td>0</td>
+                          <td>10</td>
+                      </tr>
+                      <tr>
+                          <td>1</td>
+                          <td>20</td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>15</td>
+                      </tr>
+                      <tr>
+                          <td>3</td>
+                          <td>5</td>
+                      </tr>
+                  </tbody>
+              </table>
+              <pre><code data-trim>
+              &lt;path d="M0 10 L 10 20 L 20 15 L 30 5"/&gt;
+              </code></pre>
+          </section>
+          <section>
+              <p>Invertendo coordenadas e multiplicando x por 10</p>
+              <div style="background:gray">
+                  <svg id="resizableSVG" viewBox="0 0 60 21" height="200" width:"100%" >
+                      <g transform="translate(0,21) scale(1,-1)">
+                          <path d="M0 10 L 10 20 L 20 15 L 30 5" fill="transparent" stroke="black" stroke-width="0.4"/>
+                      </g>
+                  </svg>
+              </div>
+          </section>
+          <section>
+              <p>Tag defs para definir e reusar symbols</p>
+
+<pre><code data-trim>
+&lt;defs&gt;
+&lt;g id="blackPiece"&gt;
+    &lt;circle stroke-width=".035006" cy=".52" cx=".52" r=".4" fill="#333333"/&gt;
+    &lt;circle stroke-width=".035006" cy=".5" cx=".5" r=".4" fill="#222222"/&gt;
+&lt;/g&gt;
+&lt;g id="whitePiece"&gt;
+    &lt;circle stroke-width=".035006" cy=".52" cx=".52" r=".4" fill="#333333"/&gt;
+    &lt;circle stroke-width=".035006" cy=".5" cx=".5" r=".4" fill="#F9F9F9"/&gt;
+&lt;/g&gt;
+&lt;g id="boardSlot"&gt;
+    &lt;rect stroke-width="0" height="1" width="1" y="0" x="0" fill="#ffbd13" /&gt;
+    &lt;path stroke="#000" stroke-width=".100" d="m0.5 0v1.1" /&gt;
+    &lt;path stroke="#000" stroke-width=".100"  d="m0 0.5h1.1" /&gt;
+&lt;/g&gt;
+&lt;/defs&gt;
+</code></pre>
+<pre><code data-trim>
+    &lt;use href="#boardSlot"/&gt;
+</code></pre>
+          </section>
+          <section>
+              <h1>Integrando svg e react</h1>
+              <p>Só sair usando (mais ou menos)</p>
+          </section>
+          <section>
+              <p>Problemas ao importar do inkscape</p>
+              <ul>
+                  <li>Inkscape cria uma string style gigante (e o react não usa inline styles)</li>
+                  <li>Attributos com dash. Ex: stroke-width</li>
+                  <li>Muita, mas muita metadata</li>
+              </ul>
+          </section>
+          <section>
+              <p>Solução</p>
+              <p>Python scour para limpar svg e separar style</p>
+<pre><code data-trim>
+scour -i rect.svg -o tileN.svg --enable-viewboxing --enable-id-stripping --enable-comment-stripping --shorten-ids --indent=none             
+</code></pre>
+              <p>Find replace</p>
+              <p>Planos para escrever uma ferramenta (inkscape plugin?)</p>
+          </section>
 		</div>
 		</div>
 
