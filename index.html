@@ -45,6 +45,11 @@
              <div style="border-radius: 50%;width:100%;height:100%;background:red;">width 100%</div>
           </section>
           <section>
+              <p>Scalable Vector Graphics - SVG</p>
+              <p>Imagem vetorial baseada em XML</p>
+              <p>Suporte básico em todos os browsers</p>
+          </section>
+          <section>
               <h1>SVG - Feito pra desenhar</h1>
               <pre><code data-trim>
                   <svg viewBox="0 0 1 1">
@@ -135,7 +140,7 @@
                         <tbody>
                             <tr>
                                 <td>0</td>
-                                <td contentEditable="true" id="firstCoord">10</td>
+                                <td contentEditable="true" id="firstCoord">0</td>
                             </tr>
                             <tr>
                                 <td>10</td>
@@ -147,20 +152,20 @@
                             </tr>
                             <tr>
                                 <td>30</td>
-                                <td contentEditable="true" id="fourthCoord">5</td>
+                                <td contentEditable="true" id="fourthCoord">30</td>
                             </tr>
                         </tbody>
                     </table>
                   </div>
                   <div style="background:gray;">
-                      <svg id="resizableSVG" viewBox="0 0 60 21" height="200" width:"100%" >
-                          <g transform="translate(0,21) scale(1,-1)">
-                              <path id="graphPath" d="M0 10 L 10 20 L 20 15 L 30 5" fill="transparent" stroke="black" stroke-width="0.4"/>
+                      <svg id="resizableSVG" viewBox="0 0 30 30" height="100%" width="100%" preserveAspectRatio="xMidYMid meet">
+                          <g transform="translate(0,30) scale(1,-1)">
+                              <path id="graphPath" d="M0 0 L 10 20 L 20 15 L 30 30" fill="transparent" stroke="black" stroke-width="0.4"/>
                           </g>
                      </svg>
                  </div>
               </div>
-              <p>&lt;path d="M0 <span class="firstCoordOut">10</span> L 10 <span class="secondCoordOut">20</span> L 20 1<span class="thirdCoordOut">15</span> L 30 <span class="fourthCoordOut">5</span>"/&gt;</p>
+              <p>&lt;path d="M0 <span class="firstCoordOut">0</span> L 10 <span class="secondCoordOut">20</span> L 20 <span class="thirdCoordOut">15</span> L 30 <span class="fourthCoordOut">30</span>"/&gt;</p>
               <p>* coordenadas invertidas</p>
           </section>
           <section>
